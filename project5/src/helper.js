@@ -7,7 +7,7 @@ export const randomCoin = (arr) => {
  * RandomCOlorPalette
  */
 
-export const randomColor = (arr) => {
-    let idx = Math.floor(Math.random() * arr.length);
-    return arr[idx];
+export const randomColor = () => {
+    return '#' + Math.random().toString(16).substr(-6);
+
 };

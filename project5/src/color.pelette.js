@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
 import { randomColor } from './helper';
+import Box from './box';
 
 class ColorPelette extends Component {
-    static defaultProps = {
-        colors: ['red', 'purple', 'orange', 'cyan', 'black']
-    }
     constructor(props) {
         super(props);
         this.state = {
-            color: randomColor(this.props.colors)
+            numberPallete: 15,
+            colors: []
+        }
+        this.generateColor();
+    };
+
+    generateColor = () => {
+        for (let i = 0; i < this.state.numberPallete; i++) {
+            this.state.colors.push({ hexcode: randomColor() });
         }
     };
 
-    colorPalette = () => {
-        randomColor(this.props.colors);
+    updateColor = (idx) => {
+        let color = randomColor();
+        this.state.colors[idx].hexcode = color;
+        this.setState({ colors: this.state.colors });
     };
     render() {
+        console.log(this.state.colors);
         return (
             <div className="row">
-                <div style={{ width: '100px', height: '100px', backgroundColor: this.state.color }}>
-
-                </div>
+                {
+                    this.state.colors.map((color, idx) => {
+                        return (<Box key={idx} id={idx} updatecolor={this.updateColor} color={color} />);
+                    })
+                }
             </div>
         )
     }
