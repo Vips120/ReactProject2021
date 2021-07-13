@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from './form';
+import MultiForm from './multiform';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,8 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Form />
+        {/* <Form /> */}
+        <MultiForm />
       </React.Fragment>
     );
   }
