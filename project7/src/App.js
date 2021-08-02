@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewTodoForm from './newtodo.form';
 import TodoList from './todolist';
+import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,10 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <TodoList />
+        <div className="container">
+
+          <TodoList />
+        </div>
       </React.Fragment>
     )
   }

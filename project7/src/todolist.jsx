@@ -18,12 +18,22 @@ class TodoList extends Component {
     };
     removeTodo = (id) => {
         this.setState({ todos: this.state.todos.filter(item => item.id !== id) });
-    }
+    };
+    updateTodo = (id, data) => {
+        let utodo = this.state.todos.map(t => {
+            if (t.id === id) {
+                return { ...t, task: data };
+            }
+            return t;
+        });
+        this.setState({ todos: utodo });
+    };
 
     render() {
         let todos = this.state.todos.map(todo => <Todo key={todo.id} t={todo}
             id={todo.id}
             deletetodoAction={this.removeTodo}
+            updateTodoAction={this.updateTodo}
         />)
         return (
             <React.Fragment>
